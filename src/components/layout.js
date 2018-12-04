@@ -1,11 +1,51 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import { StaticQuery, graphql } from 'gatsby'
 
 import Header from './header'
-import './layout.css'
+import Nav from './Nav'
 
+const navItems = [
+  {
+    label: 'hello',
+    subNav: null,
+  },
+  {
+    label: 'foo',
+    subNav: null,
+  },
+  {
+    label: 'bar',
+    subNav: null,
+  },
+  {
+    label: 'baz',
+    subNav: [
+      {
+        label: 'hello',
+        subNav: null,
+      },
+      {
+        label: 'foo',
+        subNav: null,
+      },
+      {
+        label: 'bar',
+        subNav: [
+          {
+            label: '3rd',
+            subNav: null,
+          },
+          {
+            label: 'level',
+            subNav: null,
+          },
+        ],
+      },
+    ],
+  },
+]
 const Layout = ({ children }) => (
   <StaticQuery
     query={graphql`
@@ -18,7 +58,7 @@ const Layout = ({ children }) => (
       }
     `}
     render={data => (
-      <>
+      <Fragment>
         <Helmet
           title={data.site.siteMetadata.title}
           meta={[
@@ -27,7 +67,12 @@ const Layout = ({ children }) => (
           ]}
         >
           <html lang="en" />
+          <link
+            rel="stylesheet"
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
+          />
         </Helmet>
+        <Nav navItems={navItems} />
         <Header siteTitle={data.site.siteMetadata.title} />
         <div
           style={{
@@ -39,7 +84,7 @@ const Layout = ({ children }) => (
         >
           {children}
         </div>
-      </>
+      </Fragment>
     )}
   />
 )

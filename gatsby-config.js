@@ -3,6 +3,21 @@ module.exports = {
     title: 'Cheronimo',
   },
   plugins: [
+    'gatsby-plugin-emotion',
+    {
+      resolve: 'gatsby-plugin-typography',
+      options: {
+        pathToConfigModule: 'src/components/typography.js',
+      },
+    },
+    {
+      resolve: 'gatsby-source-storyblok',
+      options: {
+        accessToken: 'nZeT7oEnC2oopOI3iaeBpwtt',
+        homeSlug: 'home',
+        version: 'draft',
+      },
+    },
     'gatsby-plugin-react-helmet',
     {
       resolve: 'gatsby-plugin-manifest',
@@ -18,4 +33,4 @@ module.exports = {
     },
     'gatsby-plugin-offline',
   ],
-};
+}
