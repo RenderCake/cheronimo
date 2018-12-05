@@ -23,8 +23,6 @@ export default (props) => {
         const list = data.allStoryblokEntry.edges
           .filter(({ node: { full_slug } }) => {
             const service = full_slug.split('/')[1]
-            console.log(service)
-
             return service === serviceType
           })
           .sort()

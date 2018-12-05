@@ -11,18 +11,15 @@ injectGlobal`
 `
 export default function Service(props) {
   const {
-    name,
-    subHeader,
-    featuredImage,
-    description,
-    userGuides,
-    pricing,
-    faqs,
-    videos,
+    name = '',
+    subHeader = '',
+    featuredImage = '',
+    description = '',
+    userGuides = [],
+    pricing = [],
+    faqs = '',
+    videos = '',
   } = props.blok
-  console.log(props)
-
-  console.log(videos.split(','))
   return (
     <div css={{ backgroundColor: '#f1f1f1' }}>
       <div
