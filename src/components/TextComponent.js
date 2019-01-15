@@ -30,7 +30,7 @@ const theme = {
 }
 export default function TextComponent(props) {
   const {
-    blok: { text, style },
+    blok: { text, style, width },
   } = props
   return (
     <SbEditable content={props.blok}>
@@ -43,6 +43,7 @@ export default function TextComponent(props) {
             '& p': {
               margin: 0,
             },
+            width: width
           },
           theme[style],
         ]}
